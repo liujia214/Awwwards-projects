@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-family: MuseoSans, serif;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+            list-style-type: none;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        header{
+            position: relative;
+        }
+        header nav.head{
+            line-height:50px;
+            height:50px;
+            background-color: #E7E7E7;
+            padding: 0 20px;
+            position: relative;
+        }
+        header nav.menu{
+            background-color: #D2D4D5;
+            height: 60px;
+            line-height: 60px;
+            padding-left:20px;
+            border-top: 1px solid #C0C4C4;
+            border-bottom: 1px solid #C0C4C4;
+            position: relative;
+        }
+        .list{
+            border-right:1px solid #C0C4C4;
+            padding: 0 15px;
+            cursor: pointer;
+            transition: all 500ms ease;
+        }
+        header nav li:hover{
+            background-color: #E7E7E7;
+        }
+        header nav li.search{
+            background-color: black;
+        }
+        header nav li.submit{
+            background-color: #427B74;
+        }
+        header nav li.search:hover,nav li.submit:hover{
+            opacity: 0.7;
+        }
+        section{
+            position: relative;
+            background-color: #D2D4D5;
+        }
+        section::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section div.block{
+            position: relative;
+            padding: 25px 0;
+        }
+        section div.block::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.inner{
+            position: relative;
+            padding: 0 60px;
+        }
+        div.inner::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section div.half{
+            position: relative;
+            float: left;;
+            width: 50%;
+        }
+        section div.layer{
+            position: relative;
+            padding: 20px 0;
+            border-bottom: 1px solid #C0C4C4;
+        }
+        section div.bottom{
+            padding-bottom: 10px;
+        }
+        section div.half div.like{
+            position: absolute;
+            right: 0px;
+            bottom: 20px;
+        }
+        section div.layer li.type{
+            font-size: 12px;
+            width: 70px;
+            text-align: center;
+        }
+        section ul.photo li{
+            padding: 0 10px;
+        }
+        section div.nominees{
+            width: 66.66%;
+            position: relative;
+            padding: 0 0 23px 0;
+            box-sizing: border-box;
+        }
+        section div.developer{
+            width: 33.33%;
+            position: relative;
+            padding: 0 0 23px 23px;
+            box-sizing: border-box;
+        }
+        section div.trending{
+            width: 100%;
+            position: relative;
+            padding: 0 0 23px 0;
+            box-sizing: border-box;
+        }
+        section h4{
+            margin-bottom: 20px;
+        }
+        section h4.pad{
+            padding-left: 23px;
+        }
+        section ul.vote li{
+            width: 50%;
+            padding:0 0 0 23px;
+            box-sizing: border-box;
+        }
+        section ul.site li{
+            width: 33.33%;
+            padding: 0 0 0 23px;
+            box-sizing: border-box;
+        }
+        section ul.dir li{
+            width: 25%;
+            padding: 0 0 0 23px;
+            box-sizing: border-box;
+        }
+        section ul.blog li{
+            width: 25%;
+            padding-left: 23px;
+            box-sizing: border-box;
+        }
+        figure{
+            margin: 0;
+        }
+        section div.addlike{
+            position: relative;
+            margin-top: 20px;
+        }
+        section div.like{
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+        .grid{
+            margin-left: -23px;
+        }
+        .grid::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section img.fig{
+            width: 100%;
+            height: auto;
+        }
+        section img{
+            transition: all 500ms ease;
+        }
+        section img:hover{
+            opacity: 0.5;
+        }
+        section div.score{
+            font-weight: 200;
+            font-size: 200%;
+        }
+        section div.votenumber{
+            padding-top: 20px;
+            line-height: 20px;
+        }
+        section div.votenumber::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section div.votebutton{
+            width: 120px;
+            height: 44px;
+            background-color: #427A72;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 2.5px;
+        }
+        section div.cate{
+            width: auto;
+            height: 25px;
+            padding: 0 10px;
+            background-color: #C2C3C4;
+            color: black;
+            line-height: 25px;
+            text-align: center;
+            border-radius: 2.5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            transition: all 500ms ease;
+        }
+        section div.cate:hover{
+            background-color: black;
+        }
+        section div.cate:hover a{
+            color: white;
+        }
+        div.sub{
+            border: 1px solid #C0C4C4;
+            line-height: 30px;
+            height: 300px;
+        }
+        section div.sublog{
+            padding: 20px 20px 100px 20px;
+        }
+        div.sudir{
+            padding: 18px 18px 50px 18px;
+        }
+        section div.event{
+            background-color: white;
+            line-height: 20px;
+            height: 300px;
+        }
+        section li.half{
+            width: 50%;
+            box-sizing: border-box;
+        }
+        section div.jobs{
+            padding: 30px 60px;
+            border-top: 1px solid #C0C4C4;
+        }
+        section div.jobs::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section div.position{
+            padding-bottom: 35px;
+        }
+        section div.jobs .green{
+            color: #427B74;
+        }
+        section div.jobs a.green:hover{
+            color: black;
+        }
+        section div.jobs .red{
+            color: #BF5F46;
+        }
+        footer ul.social li{
+            padding-right: 10px;
+        }
+        footer a.white{
+            color: #434343;
+        }
+        footer .readmore{
+            color: #3F746D;
+        }
+        footer a.readmore:hover{
+            color: white;
+        }
+        footer ul.grid li{
+            padding-left: 23px;
+            box-sizing: border-box;
+            margin-bottom: 35px;
+        }
+        footer h4{
+            margin-bottom: 40px;
+        }
+        .white{
+            color: #343532;
+        }
+        .footcolor{
+            color: #434343;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var canvas1 = document.getElementById('canvas1');
+            var canvas2 = document.getElementById('canvas2');
+            var canvas3 = document.getElementById('canvas3');
+            var canvas4 = document.getElementById('canvas4');
+            var canvas5 = document.getElementById('canvas5');
+            getCircle(canvas1,canvas2,canvas3,canvas4,canvas5);
+        });
+        function getCircle(){
+            /* var array = Array.prototype.slice.call(arguments);
+            array.forEach(function(obj){
+                if(obj.getContext){
+                    var ctx = obj.getContext('2d');
+                    ctx.beginPath();
+                    var radius = obj.height/2;
+                    ctx.arc(radius,radius,radius*0.8,-Math.PI/2,2*Math.PI,false);
+                    if(obj == arguments[0]){
+                        ctx.strokeStyle = 'rgba(191,95,70,0.5)';
+                    }
+                    else if(obj == arguments[1]){
+                        ctx.strokeStyle = 'rgba(218,189,98,0.5)';
+                    }
+                    ctx.lineWidth = radius*0.2;
+                    ctx.stroke();
+                }
+            });*/
+            for(var i = 0;i<arguments.length;i++){
+                if(arguments[i].getContext){
+                    var ctx = arguments[i].getContext('2d');
+                    ctx.beginPath();
+                    var radius = arguments[i].height/2;
+                    ctx.arc(radius,radius,radius*0.8,-Math.PI/2,2*Math.PI,false);
+
+                    switch(i){
+                        case 0:
+                            ctx.strokeStyle = 'rgba(191,95,70,0.5)';
+                            break;
+                        case 1:
+                            ctx.strokeStyle = 'rgba(218,189,98,0.5)';
+                            break;
+                        case 2:
+                            ctx.strokeStyle = 'rgba(66,123,116,0.5)';
+                            break;
+                        case 3:
+                            ctx.strokeStyle = 'rgba(53,128,147,0.5)';
+                            break;
+                        case 4:
+                            ctx.strokeStyle = 'rgba(38,38,38,0.5)';
+                    }
+                    ctx.lineWidth = radius*0.2;
+                    ctx.stroke();
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="head">
+            <div class="left">The awards for design,creativity and innovation on the Internet</div>
+            <div class="right">Are you a member?&nbsp;&nbsp;&nbsp;
+                <a href="" target="">Register/Login</a>
+            </div>
+        </nav>
+        <nav class="menu">
+            <b><a href="" title="Awards:best website around the world" style="font-size: 150%">AWWWARDS</a></b>
+            <ul class="right">
+                <li class="list"><a>HOME</a></li>
+                <li class="list"><a>WINNERS</a></li>
+                <li class="list"><a>NOMINEES</a></li>
+                <li class="list"><a>DIRECTORY</a></li>
+                <li class="list"><a>SHOP</a></li>
+                <li class="list"><a>JOBS</a></li>
+                <li class="list"><a>BLOG</a></li>
+                <li class="list"><a>ABOUT US</a></li>
+                <li class="submit list"><a style="color: white">SUBMIT YOUR SITE</a></li>
+                <li class="search list"><a style="color: white">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+            <div class="block">
+                <div class="inner">
+                    <div class="half">
+                        <a href="">
+                            <img src="http://www.awwwards.com/awards/submissions/2015/06/55914b68904af.jpeg" width="630px" height="450px">
+                        </a>
+                    </div>
+                    <div class="half">
+                        <div class="layer" style="padding-top: 0">
+                            <div class="bottom">Sunday12, July</div>
+                            <div class="bottom"><strong><a href="" style="font-size: 150%">Piaget Possession</a></strong></div>
+                            <div>By <b><a href="">84.Paris  </a></b>from <b>France</b></div>
+                            <div class="like"><span>18  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                        </div>
+                        <div class="layer">
+                            <ul>
+                                <li class="circle">
+                                    <canvas id='canvas1' height="70px" width="70px"></canvas>
+                                </li>
+                                <li class="circle">
+                                    <canvas id='canvas2' height="70px" width="70px"></canvas>
+                                </li>
+                                <li class="circle">
+                                    <canvas id='canvas3' height="70px" width="70px"></canvas>
+                                </li>
+                                <li class="circle">
+                                    <canvas id='canvas4' height="70px" width="70px"></canvas>
+                                </li>
+                                <li  class="circle right">
+                                    <canvas id='canvas5' height="70px" width="70px"></canvas>
+                                </li>
+                                <li  class="circle right" style="background: url(http://www.awwwards.com/bundles/tvweb/images/ico-laurel.svg) no-repeat;background-size: 100% 100%">
+                                </li>
+                            </ul>
+                            <div>
+                                <ul>
+                                    <li class="type">DESIGN</li>
+                                    <li class="type">USABILITY</li>
+                                    <li class="type">CREATIVITY</li>
+                                    <li class="type">CONTENT</li>
+                                    <li class="type right"><b>AVERAGE</b></li>
+                                    <li class="type right" style="width: auto">SITE OF THE DAY</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="layer">
+                            <ul class="photo">
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/95/henry-daubrez.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/148/54cb485ab6cf0.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/306550/54c8a4c0dc6b1.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/67/stefano.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/213570/malte-gruhl.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/15525/54ca243507231.jpg"></a></li>
+                                <li><a href=""><img src="http://www.awwwards.com/media/cache/thumb_image_user_70/awards/avatar/21550/54d20880120df.jpg"></a></li>
+                            </ul>
+                        </div>
+                        <div class="layer" style="line-height: 30px">
+                            Digital experience for an icon of Piaget jewelry, the Possession ring cultivates its uniqueness through a harmonious blend of aesthetics and sensuality. The ring embodies the creative boldness of Piaget and serves as a source of inspiration as it turns on your finger.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="inner">
+                    <div class="grid">
+                        <div class="nominees left">
+                            <h4 class="pad">LAST NOMINEES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We need your vote</h4>
+                            <ul class="vote">
+                                <li>
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/07/55a0d7c450de2.jpeg"></a></figure>
+                                    <div class="addlike">
+                                        <a href=""><span><b>Sete tres</b></span></a>
+                                        <div class="like"><span>13  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                    </div>
+                                    <div class="layer">By <a href=""><span style="color: #427B74"><b>Guilherme Pangnotta</b></span></a> from <b>Brazil</b></div>
+                                    <div class="votenumber">
+                                        <div class="left">
+                                            <div class="score">7.21</div>
+                                            <div>60 USERS VOTED</div>
+                                        </div>
+                                        <div class="right votebutton">VOTE NOW!
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/07/559edea3b355a.jpeg"></a></figure>
+                                    <div class="addlike">
+                                        <a href=""><span><b>Quotes Magazine</b></span></a>
+                                        <div class="like"><span>13  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                    </div>
+                                    <div class="layer">By <a href=""><span style="color: #427B74"><b>Quotes Magazine</b></span></a> <b>from Bulgaria</b></div>
+                                    <div class="votenumber">
+                                        <div class="left">
+                                            <div class="score">6.67</div>
+                                            <div>9 USERS VOTED</div>
+                                        </div>
+                                        <div class="right votebutton">VOTE NOW!
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="developer left">
+                            <h4>DEVELOPER AWARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Every Wednesday</h4>
+                            <div>
+                                <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/06/55803ddfc850f.jpg"></a></figure>
+                                <div class="addlike">
+                                    <a href=""><span><b>Karim Rashid</b></span></a>
+                                    <div class="like"><span>70</span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                </div>
+                                <div class="layer" style="border-bottom: none">By <a href=""><span style="color: #427B74"><b>Anton & Irene</b></span></a> (U.S.A)</div>
+                                <div>
+                                    <div class="left cate"><a href="">Colorful</a></div>
+                                    <div class="left cate"><a href="">Design</a></div>
+                                    <div class="left cate"><a href="">Minimal</a></div>
+                                </div>
+                                <div style="clear: left">
+                                    <div class="left cate"><a href="">Architecture</a></div>
+                                    <div class="left cate"><a href="">Art$LLLustration</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block" style="border-bottom: 1px solid #C0C4C4">
+                <div class="inner">
+                    <div class="grid">
+                        <div class="trending">
+                            <h4 class="pad">TRENDING SITES View all sites</h4>
+                            <ul class="site">
+                                <li>
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/07/55945b2f6db18.jpeg"></a></figure>
+                                    <div class="addlike bottom">
+                                        <a href=""><span><b>Get The People</b></span></a>
+                                        <div class="like"><span>21  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                    </div>
+                                    <div class="bottom">By <a href=""><span style="color: #427B74"><b>Get The People</b></span></a> from <b>USA</b></div>
+                                    <div>
+                                        July 02, 2015
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/06/55796598733a7.jpeg"></a></figure>
+                                    <div class="addlike bottom">
+                                        <a href=""><span><b>Fivefootsix</b></span></a>
+                                        <div class="like"><span>36  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                    </div>
+                                    <div class="bottom">By <a href=""><span style="color: #427B74"><b>Roll Studio</b></span></a> from <b>United Kingdom</b> with <b>7.09</b></div>
+                                    <div>
+                                        June11, 2015 in <a href=""><span style="color: #427B74"><b>SOTD</b></span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_sotd_list/awards/submissions/2015/05/554ccfbd4b3cd.jpg"></a></figure>
+                                    <div class="addlike bottom">
+                                        <a href=""><span><b>Quotes Magazine</b></span></a>
+                                        <div class="like"><span>21  </span><a href=""><img src="http://static.tumblr.com/qxaauuk/Hkhlgxm9d/heart.png" width="20px" height="20px"></a></div>
+                                    </div>
+                                    <div class="bottom">By <a href=""><span style="color: #427B74"><b>Jerome Bdin & Jean-Baptiste Sinniger & Leo Cheron</b></span></a> from <b>Bulgaria</b></div>
+                                    <div>
+                                        May 07,2015
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block" style="padding-top: 20px">
+                <div class="inner">
+                    <div class="grid">
+                        <h4 class="pad">BLOG</h4>
+                        <ul class="blog">
+                            <li>
+                                <div class="sublog sub">
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_post_home/bundles/tvweb/images/pages/awwwards-conference-2016.jpg"></a></figure>
+                                    <div><a href=""><b>Awwwwards Conference 2016</b></a></div>
+                                    <div><a href="" style="color: #5594AF"></a></div>
+                                    <div>Tickets available now for Awwwwards Conference Amsterdam 2016</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sublog sub">
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_post_home/awards/images/2015/06/thumbnail-cartelle-awwwards.jpg"></a></figure>
+                                    <div><a href=""><b>Awwwwards Conference 2016</b></a></div>
+                                    <div><a href="" style="color: #5594AF"></a></div>
+                                    <div>Tickets available now for Awwwwards Conference Amsterdam 2016</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sublog sub">
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_post_home/awards/images/2015/05/creative-portfolio-upd-cover.jpg"></a></figure>
+                                    <div><a href=""><b>Awwwwards Conference 2016</b></a></div>
+                                    <div><a href="" style="color: #5594AF"></a></div>
+                                    <div>Tickets available now for Awwwwards Conference Amsterdam 2016</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sublog sub">
+                                    <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_post_home/awards/images/2015/06/claudio-thumb.jpg"></a></figure>
+                                    <div><a href=""><b>Awwwwards Conference 2016</b></a></div>
+                                    <div><a href="" style="color: #5594AF"></a></div>
+                                    <div>Tickets available now for Awwwwards Conference Amsterdam 2016</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="inner">
+                    <div class="grid">
+                        <div class="nominees left">
+                            <h4 class="pad">DIRECTORY Find the best design firms</h4>
+                            <ul class="dir">
+                                <li>
+                                    <div class="sudir sub">
+                                        <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_image_directory_186/awards/avatar/321947//552f74eb44d19.jpg"></a></figure>
+                                        <div><a href=""><b>Bold Creative</b></a></div>
+                                        <div><a href="" style="color: #5594AF">boldcreative.com</a></div>
+                                        <div><b>U.S.A</b></div>
+                                        <div>New York</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sudir sub">
+                                        <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_image_directory_186/awards/avatar/310909//54ef5fb7e9fbb.png"></a></figure>
+                                        <div><a href=""><b>Crafted</b></a></div>
+                                        <div><a href="" style="color: #5594AF">craftedny.com</a></div>
+                                        <div><b>U.S.A</b></div>
+                                        <div>New York</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sudir sub">
+                                        <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_image_directory_186/awards/avatar/336621//55784e76da3ce.jpeg"></a></figure>
+                                        <div><a href=""><b>ymee</b></a></div>
+                                        <div><a href="" style="color: #5594AF">ymee.us</a></div>
+                                        <div><b>U.S.A</b></div>
+                                        <div>New York</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sudir sub">
+                                        <figure><a href=""><img class="fig" src="http://www.awwwards.com/media/cache/thumb_image_directory_186/awards/avatar/112235/54189c238cfce.jpeg"></a></figure>
+                                        <div><a href=""><b>Stectech</b></a></div>
+                                        <div><a href="" style="color: #5594AF">stectech.com</a></div>
+                                        <div><b>U.S.A</b></div>
+                                        <div>Phoenix</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="developer left" style="padding-left: 0px">
+                            <h4 class="pad">EVENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View all events</h4>
+                            <ul class="vote">
+                                <li>
+                                    <div class="sudir event">
+                                        <h4><a href="">Generate<br>London</a></h4>
+                                        <div style="color: #427B74">September 17, 2015</div>
+                                        <div><b>London</b></div>
+                                        <div>After two amazing events in London in 2013 and 2014, Generate is black at the Grand...</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sudir event">
+                                        <h4><a href="">Future of Web Design San Francisco</a></h4>
+                                        <div style="color: #427B74">October 28, 2015</div>
+                                        <div><b>San Francisco, CA</b></div>
+                                        <div>They proudly bring you the 1st ever Fure of Web Design, San Francisco the event...</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block" style="padding-bottom: 10px">
+                <div class="inner" style="padding-bottom: 30px">
+                    <div class="left"><b>JOBS</b> For web <span style="background-color:#B4B5B5 ">professionals</span></div>
+                    <div class="right">
+                        <ul>
+                            <li>Design (<a href="" style="color: #427B74;text-decoration: underline">128</a>)</li>
+                            <li>Programming (<a href="" style="color: #427B74;text-decoration: underline">98</a>)</li>
+                            <li>Other (<a href="" style="color: #427B74;text-decoration: underline">11</a>)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="jobs">
+                    <div class="left" style="width: 7%"><a href=""><img src="http://www.awwwards.com/media/cache/thumb_job_50/awards/job/2015/07/55a0122d77db5.jpeg"></a></div>
+                    <div class="left" style="width: 93%;">
+                        <div class="position">
+                            <div class="left"><a href=""><b>Art Director</b></a> </div>
+                            <div class="right red">3 Days Ago</div>
+                        </div>
+                        <div class="location" style="clear: left;margin-bottom: 0">
+                            <div class="left"><a class="green" href="">Tribal DDB Canada</a> Canada - Vancouver</div>
+                            <div class="right">10 Jul <span class="green">Full-time</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jobs">
+                    <div class="left" style="width: 7%"><a href=""><img src="http://www.awwwards.com/media/cache/thumb_job_50/awards/avatar/96496/5593ce7b1dd0e.png"></a></div>
+                    <div class="left" style="width: 93%;">
+                        <div class="position">
+                            <div class="left"><a href=""><b>Adveris,jeune agence interactive de lannee 2014 recrute un Integrateur/Dev Front</b></a> </div>
+                            <div class="right red">5 Days Ago</div>
+                        </div>
+                        <div class="location" style="clear: left;margin-bottom: 0">
+                            <div class="left"><a class="green" href="">Adveris</a> France - Paris</div>
+                            <div class="right">08 Jul <span class="green">Full-time</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jobs">
+                    <div class="left" style="width: 7%"><a href=""><img src="http://www.awwwards.com/media/cache/thumb_job_50/awards/avatar/83209/515a41c9278df.jpeg"></a></div>
+                    <div class="left" style="width: 93%;">
+                        <div class="position">
+                            <div class="left"><a href=""><b>Full Stack(ish) Developer</b></a> </div>
+                            <div class="right red">6 Days Ago</div>
+                        </div>
+                        <div class="location" style="clear: left;margin-bottom: 0">
+                            <div class="left"><a class="green" href="">Super Top Secret </a> U.S.A - Salt Lake City</div>
+                            <div class="right">07 Jul <span class="green">Full-time</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jobs">
+                    <div class="left" style="width: 7%"><a href=""><img src="http://www.awwwards.com/media/cache/thumb_job_50/awards/avatar/342617/559af1fb79f92.png"></a></div>
+                    <div class="left" style="width: 93%;">
+                        <div class="position">
+                            <div class="left"><a href=""><b>Designer</b></a> </div>
+                            <div class="right red">7 Days Ago</div>
+                        </div>
+                        <div class="location" style="clear: left;margin-bottom: 0">
+                            <div class="left"><a class="green" href="">Wistia</a> U.S.A - Cambridge</div>
+                            <div class="right">06 Jul <span class="green">Full-time</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jobs">
+                    <div class="left" style="width: 7%"><a href=""><img src="http://www.awwwards.com/media/cache/thumb_job_50/awards/job/2015/07/559ae7696c840.jpeg"></a></div>
+                    <div class="left" style="width: 93%;">
+                        <div class="position">
+                            <div class="left"><a href=""><b>Junior Interactive Designer</b></a> </div>
+                            <div class="right red">7 Days Ago</div>
+                        </div>
+                        <div class="location" style="clear: left;margin-bottom: 0">
+                            <div class="left"><a class="green" href="">Bossa NYC</a> N.S.A - New York</div>
+                            <div class="right">06 Jul <span class="green">Full-time</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <footer>
+        <div style="padding: 35px 0">
+            <div style="margin:0 auto;width: 270px">
+                <ul class="social">
+                    <li><a href="http://www.twitter.com/awwwards" target="_blank" title="Twitter">Twitter</a></li>
+                    <li><a class="facebook" href="http://www.facebook.com/awwwards" target="_blank" title="Twitter">Facebook</a></li>
+                    <li><a href="https://plus.google.com/109196847768624896871/posts" target="_blank" title="Twitter">Google+</a></li>
+                    <li><a href="http://www.pinterest.com/awwwardscom" target="_blank" title="Twitter">Pinterest</a></li>
+                    <li><a href="http://vimeo.com/awwwards" target="_blank" title="Twitter">Vimeo</a></li>
+                    <li><a href="http://feeds.feedburner.com/awwwards-sites-of-the-day" target="_blank" title="Twitter">RSS</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="background-color: #1a1a1a;border-bottom: 1px solid #C0C4C4">
+            <div style="padding: 35px 0">
+                <div style="width:1000px;margin: 0 auto;text-align: center">
+                    <ul class="grid">
+                        <li>
+                            <div class="sudir sub" style="padding-bottom: 10px;height: 250px;border: 1px solid #272728">
+                                <figure><a href=""><img class="fig" src="http://www.awwwards.com/bundles/tvweb/images/footer/conferences.png"></a></figure>
+                                <div><a class="white" href=""><b>Conference and prize-giving</b></a></div>
+                                <div><a class="readmore" href="">Read more</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sudir sub" style="padding-bottom: 10px;height: 250px;border: 1px solid #272728">
+                                <figure><a href=""><img class="fig" src="http://www.awwwards.com/bundles/tvweb/images/footer/certificates.png"></a></figure>
+                                <div><a class="white" href=""><b>Certificates</b></a></div>
+                                <div><a class="readmore" href="">Read more</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sudir sub" style="padding-bottom: 10px;height: 250px;border: 1px solid #272728">
+                                <figure><a href=""><img class="fig" src="http://www.awwwards.com/bundles/tvweb/images/footer/jury-1.jpg"></a></figure>
+                                <div><a class="white" href=""><b>Jury 2015</b></a></div>
+                                <div><a class="readmore" href="">Read more</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sudir sub" style="padding-bottom: 10px;height: 250px;border: 1px solid #272728">
+                                <figure><a href=""><img class="fig" src="http://www.awwwards.com/bundles/tvweb/images/footer/webydo.jpg"></a></figure>
+                                <div style="overflow: hidden"><a class="white" href=""><b>Craft your Design Without</b></a></div>
+                                <div><a class="readmore" href="">Official Sponsor</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <h4 style="color: #343532;font-size: 14px">
+                        <div style="width:140px ;height: 5px;background-color: #3F746D;margin: 0 auto 30px"></div>
+                        THE AW<span class="readmore">WW</span>ARDS THAT RECOGNIZE THE TALENT AND EFFORT OF THE BEST WEB DESIGNERS IN THE WORLD
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 30px 0 30px;background-color: #1a1a1a;">
+            <div class="inner">
+                <div class="left white"><span>W<span class="readmore" style="font-size: large">WW</span></span> @ COPYRIGHT 2010 - 15</div>
+                <div class="right">
+                    <ul>
+                        <li class="list"><a class="footcolor" href=""><b>ABOUT US</b></a></li>
+                        <li class="list"><a class="footcolor"href=""><b>EVALUATION SYSTEM</b></a></li>
+                        <li class="list"><a class="footcolor"href=""><b>LEGAL TERMS</b></a></li>
+                        <li class="list"><a class="footcolor"href=""><b>CONTACT US</b></a></li>
+                        <li class="list"><a class="footcolor"href=""><b>HELP</b></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
